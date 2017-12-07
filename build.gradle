@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'net.spinyshell.jmtran'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-cache')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.jasig.portal:uPortal-soffit-renderer:5.0.2')
+
+	providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
